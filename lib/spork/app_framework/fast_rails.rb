@@ -5,4 +5,11 @@ class Spork::AppFramework::FastRails < Spork::AppFramework
     ENV["RAILS_ENV"] ||= 'test'
     yield
   end
+
+  def self.present?
+    File.exist?("config/environment.rb") &&
+      (File.read("config/environment.rb").include?('RAILS_GEM_VERSION') ||
+       (File.exist?("config/application.rb") &&
+        File.read("config/application.rb").include?("Rails::Application")))
+  end
 end
