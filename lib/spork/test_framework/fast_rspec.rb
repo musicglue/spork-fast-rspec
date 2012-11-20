@@ -19,4 +19,8 @@ class Spork::TestFramework::FastRSpec < Spork::TestFramework
   def app_framework
     Spork::AppFramework[:FastRails]
   end
+
+  def self.load_preference_index
+    -1
+  end
 end
